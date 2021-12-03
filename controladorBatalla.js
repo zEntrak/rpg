@@ -4,24 +4,37 @@
 
 function controlarBatalla(){
 
-    var elems = document.getElementsByClassName("botonesP1");
+    var elemsP1 = document.getElementsByClassName("botonesP1");
+    var elemsNpc = document.getElementsByClassName("botonesNpc");
    
 
     if (personajePrincipal.turnosActuales <= 0){
-        for(var i = 0; i < elems.length; i++) {
-            elems[i].disabled = true;
+        for(var i = 0; i < elemsP1.length; i++) {
+            elemsP1[i].disabled = true;      
+        }
+
+        for(var i = 0; i < elemsNpc.length; i++) {
+        elemsNpc[i].disabled = false;
+        //aca va la funcion por la cual ataca el npc automaticamente
         }
     }
-    else if (personajePrincipal.turnosActuales> 0 ){
-        for(var i = 0; i < elems.length; i++) {
-            elems[i].disabled = false;
+
+    else {
+        for(var i = 0; i < elemsP1.length; i++) {
+            elemsP1[i].disabled = false;
+            
         }
+        for(var i = 0; i < elemsNpc.length; i++) {
+            elemsNpc[i].disabled = true;
+            
+            }
     }
 }
 
 function atacaEnemigo(){
     //verificar id de elemento de los botones de los enemigos o cambia clase a botonesNpc
-  //asdads
+    var elementos = document.getElementsByClassName("botonesP1");
+
 }
 function jugadorAtaca (ataque, contrincante) {
 
@@ -112,18 +125,18 @@ function actualizarDom(npc){
         
             
             <div class="botonesNpc" id= "mordisco">
-                    <div class="button is-normal is-fullwidth"> 
+                    <button class="button is-normal is-fullwidth botonesNpc"> 
                         <span> Mordisco </span>
-                    </div>
+                    </button>
                     <p class="descripcionAtaque">
                         Acá va la descripción
                     </p>
                 </div> 
     
                 <div class="botonesNpc" id= "arañazo">
-                        <div class="button is-normal is-fullwidth"> 
+                        <button class="button is-normal is-fullwidth botonesNpc"> 
                             <span> ATAQUE </span>
-                        </div>
+                        </button>
                         <p class="descripcionAtaque">
                             Acá va la descripción
                         </p>
