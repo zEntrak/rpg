@@ -21,7 +21,7 @@ function controlarBatalla(){
 
 function atacaEnemigo(){
     //verificar id de elemento de los botones de los enemigos o cambia clase a botonesNpc
-
+  //asdads
 }
 function jugadorAtaca (ataque, contrincante) {
 
