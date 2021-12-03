@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
+    <link rel="stylesheet" href="style.css"> 
+   
+    <title>RPG</title>
+    <style>
+    	* { padding: 100; margin: 200; }
+    	canvas { background: rgb(240, 232, 232); display: block; margin: 0 auto; }
+
+        #vida {
+            width: 80%;
+            box-sizing: border-box;
+            border: 10px solid rgb(224, 74, 74);
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            background-color: rgb(224, 74, 74);
+        }
+        #mana
+        {
+            width: 80%;
+            box-sizing: border-box;
+            border: 10px solid rgb(51, 110, 206);
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            background-color: rgb(51, 110, 206);
+        }
+        #restarMana
+        {
+            width: 120%;
+            box-sizing: border-box;
+            border: 10px solid rgb(248, 249, 251) ;
+            border-radius: 8px;
+            
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <img id= "piso" src="images/piso.JPG" width="0" height="0">
+    <img id= "paredIzq" src="images/paredIzq.JPG" width="0" height="0">
+    <img id= "paredAntorcha" src="images/paredAntorcha.JPG" width="0" height="0">
+    <img id= "paredFrontal" src="images/paredFrontal.JPG" width="0" height="0">
+    <img id= "TechoVert" src="images/TechoVert.JPG" width="0" height="0">
+    <img id= "mago" src="images/mago.png" width="0" height="0">
+    
+    <img id="lobo" src="images/lobo.png"
+             width="0"
+             height="0"
+             title="Lobo">
+             <img id= "sangre" src="images/sangre.png" width="0" height="0">
+             <img id= "descargaElect" src="images/descarga.gif" width="0" height="0">
+ 
+
+
+
+    <div class="" id='divContainer'; style="position:relative;">
+        <canvas id="myCanvas" width="0" height="0" tabindex='1'>
+    
+        </canvas>
+        <div class="fondo" id='divPrincipal'; style="position:relative; top:1500 ;left:500;">
+        
+        
+        <div id='creacionPersonaje'>
+                <div id="instrucciones" style="position:absolute; top:40% ;left:5%;">Instrucciones
+                <button id=mostrarInstrucciones>Mostrar</button>
+                <span id="Inst1" style="position:fixed; top:36%; left:12%;"> </span>
+                <span id="Inst2" style="position:fixed; top:40%; left:12%;"> </span>
+                <span id="Inst3" style="position:fixed; top:44%; left:12%;"> </span>
+                </div>
+
+                <div id="personaje1" style="position:absolute; top:1000 ;left:40%;">
+                    <p>Mago: <span id="mago">Algo</span></p>
+                    <p class="vida"> ❤ <span id="vidaMago"> 0         </span></p>
+                    <br>
+                    
+                    <div class="personaje" style="position:relative; ">
+                            <img src="images/mago.png">
+                    </div>
+        
+                    <div class="botones">
+                        <br>
+                            <div> 
+                                <span id="habilidadMago1"> Descarga Eléctrica </span>
+                            </div>
+                            <p class="descripcionAtaque">
+                                Acá va la descripción
+                            </p>
+                        </div> 
+                        <br>
+            
+                    <div class="botones">
+                            <div> 
+                                <span id="habilidadMago2"> Meditar </span>
+                            </div>
+                            <p class="descripcionAtaque">
+                                Acá va la descripción
+                            </p>
+                    </div> <br>
+                    <div>
+                        <input type="button" id="magoSeleccionado" onclick="inputNombre('personaje1','personaje2','magoSeleccionado')" value="Seleccionar Mago"></input>
+                
+                    </div>
+                </div>
+               
+        
+                <div id="personaje2" style="position:absolute; top:1000 ;left:60%;">
+                    <p>Clerigo: <span id="clerigo">Algo</span></p>
+                    <p class="vida"> ❤ <span id="vidaClerigo">0</span> </p>
+                    <br>
+                    <div class="personaje">
+                            <img src="images/clerigo.png" width="60" height="60">
+                    </div>
+                
+                    
+                    <div class="botones">
+                        <br>
+                        
+                            <div> 
+                                <span> Tormenta de Fuego </span>
+                            </div>
+                            <p class="descripcionAtaque">
+                                Acá va la descripción
+                            </p>
+                        </div> 
+                        <br>
+                        
+                        <div class="botones">
+                                <div> 
+                                    <span> Curación </span>
+                                </div>
+                                <p class="descripcionAtaque">
+                                    Acá va la descripción
+                                </p>
+                        </div> 
+                        <div>
+                            <br>
+                            <input type="button" id="clerigoSeleccionado" onclick="inputNombre('personaje2','personaje1','clerigoSeleccionado')" value="Seleccionar Clérigo"></input>
+                    
+                        </div>
+                    </div>
+                   
+                </div>
+        
+            
+        
+        </div>
+        
+           
+            
+           
+        
+            
+        
+        
+        
+        </div>
+    </div>
+   
+    <script src="tpFinal.js"></script>
+   <script src="seleccionarPersonaje.js"></script>
+   <script src="generarMundo.js"></script>
+   <script src="controladorBatalla.js"></script>
+   
+
+</body>
+</html>
