@@ -238,3 +238,144 @@ background-color: rgb(107, 92, 156);
  .ocultarFondo {
     display: none;
  }
+
+
+
+.bodyMuerto {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.h1Muerto {
+  margin-top: 300px;
+ 
+  text-align: center;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  animation-name: youdied;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  
+}
+
+@keyframes youdied {
+  0% {
+    font-size: 15vw;
+    opacity: 0;
+    transform: rotate(-10deg);
+    text-shadow: 0px 1px 0px orange, 0 0 10px red, 0 0 40px red;
+    filter: blur(10px);
+  }
+  25% {
+    filter: blur(0);
+  }
+  50% {
+    opacity: 100;
+    text-shadow: 0px 1px 0px orange, 0 0 10px red, 0 0 40px red;
+    filter: grayscale(0%);
+  }
+  100% {
+    
+    transform: rotate(10deg);
+    text-shadow: 0px 22px 10px black, 0 20px 10px red, 0 20px 40px red;
+    filter: grayscale(100%);
+    overflow: hidden;
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+    font-size: 0;
+   
+  }
+}
+
+
+.startStage {
+    width: 500px;
+    height: 500px;
+    box-shadow: 1px 2px 3px white inset, -1px -2px 3px white inset;
+    background-color: #6d695c;
+    background-image: repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(60deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, transparent 1px, transparent 60px), linear-gradient(60deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.1)), linear-gradient(120deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.1));
+    background-size: 70px 120px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    display: table;
+    margin: auto;
+    position: relative;
+    line-height: 1.6;
+    /* スタートボタン押した後は#firstに飛ぶようにする */
+  }
+  .startStage h1 {
+    font-size: 350%;
+    font-family: 'Ribeye', cursive;
+  }
+  .startStage h1 i:nth-child(0) {
+    position: relative;
+    animation-name: effectVibration2;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+  .startStage h1 i:nth-child(1) {
+    position: relative;
+    animation-name: effectVibration2;
+    animation-duration: 2s;
+    animation-delay: 0.2s;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+  .startStage h1 i:nth-child(2) {
+    position: relative;
+    animation-name: effectVibration2;
+    animation-duration: 2s;
+    animation-delay: 0.4s;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+  .startStage h1 i:nth-child(3) {
+    position: relative;
+    animation-name: effectVibration2;
+    animation-duration: 2s;
+    animation-delay: 0.6s;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+  .startStage h1 i:nth-child(4) {
+    position: relative;
+    animation-name: effectVibration2;
+    animation-duration: 2s;
+    animation-delay: 0.8s;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+  .startStage h1 i:nth-child(5) {
+    position: relative;
+    animation-name: effectVibration2;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+  }
+  .startStage h1 i:nth-child(6) {
+    position: relative;
+    animation-name: effectVibration2,jumpAnim;
+    animation-duration: 2s,1s;
+    animation-delay: 1.2s, 3.8s;
+    animation-direction: alternate, normal;
+    animation-fill-mode: both, both;
+    animation-iteration-count: 1, 1;
+  }
+  .startStage > div {
+    display: table-cell;
+    vertical-align: middle;
+  }

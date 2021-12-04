@@ -126,7 +126,7 @@ class Mago extends Personaje {
     }
          
     descargaElectrica(npcAtacado) {
-      var dañoRealizado = 150;
+      var dañoRealizado = 50;
       let manaGastado = 250;
       let turnosGastados= 2;
       if (this.turnosActuales <=0){
@@ -260,24 +260,33 @@ class Mago extends Personaje {
       this.vidaMaxima -= this.vidaMaxima * 0.5;
       this.turnosActuales = 4
       this.turnosMaximos = 4
+
       
       }
     mordisco() {
-      let dañoRealizado = 230; //a modificar con math.random
+      let dañoMaxRealizado = 250
+      let dañoMinRealizado = 150
+      let dañoRealizado = Math.random() * (dañoMaxRealizado - dañoMinRealizado) + dañoMinRealizado;
+      dañoRealizado = Math.round(dañoRealizado)
+      dañoRealizado= 1500
       let turnosGastados= 3;
               
         personajePrincipal.recibeAtaque(dañoRealizado);
         this.turnosActuales -= turnosGastados;
         
-        console.log(`${this.nombre} ha atacado a ${personajePrincipal.nombre} por ${dañoRealizado} de daño. A ${personajePrincipal.nombre} le quedan ${personajePrincipal.nombre.puntosDeVida} de vida `);
+        console.log(`${this.nombre} ha atacado a ${personajePrincipal.nombre} por ${dañoRealizado} de daño. A ${personajePrincipal.nombre} le quedan ${personajePrincipal.puntosDeVida} de vida `);
       
     }
     arañazo() {
-      let dañoRealizado = 110
+      let dañoMaxRealizado = 200
+      let dañoMinRealizado = 100
+      let dañoRealizado = Math.random() * (dañoMaxRealizado - dañoMinRealizado) + dañoMinRealizado;
+      dañoRealizado = Math.round(dañoRealizado)
+      dañoRealizado= 1500
       let turnosGastados = 2
         personajePrincipal.recibeAtaque(dañoRealizado);
         this.turnosActuales -= turnosGastados;
-        console.log(`${this.nombre} ha atacado a ${personajePrincipal.nombre} por ${dañoRealizado} de daño. A ${personajePrincipal.nombre} le quedan ${personajePrincipal.nombre.puntosDeVida} de vida `);
+        console.log(`${this.nombre} ha atacado a ${personajePrincipal.nombre} por ${dañoRealizado} de daño. A ${personajePrincipal.nombre} le quedan ${personajePrincipal.puntosDeVida} de vida `);
  
     }
     draw(x, y) {
