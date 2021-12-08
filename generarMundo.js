@@ -6,14 +6,22 @@ var canvas = document.getElementById("myCanvas");
         var paredDerecha = document.getElementById("paredDerecha");
     
         var paredAntorcha = document.getElementById("paredAntorcha");
+
+        let llave = document.getElementById("llave");
     
         var paredFrontal = document.getElementById("paredFrontal");
+        var paredFrontalPuertaCerrada = document.getElementById("paredFrontalPuertaCerrada");
+        var paredFrontalPuertaAbierta = document.getElementById("paredFrontalPuertaAbierta");
+        var esquinaDerecha = document.getElementById("esquinaDerecha");
+     
+
         const mago= document.getElementById("mago");
         const lobo = document.getElementById("lobo")
         const descargaElect = document.getElementById("descargaElect")
 
         var canv = document.getElementById("myCanvas")
         let mapa = document.createElement("div");
+       
         
         var seleccionPj = false
 
@@ -110,7 +118,7 @@ function crearMapa(){
         ctx.drawImage(paredIzq,0,300,100, 100);
         ctx.drawImage(paredIzq,0,200,100, 100);
         ctx.drawImage(paredIzq,0,100,100, 100);
-        ctx.drawImage(paredIzq,0,0,100, 100);
+        ctx.drawImage(esquinaDerecha,0,0,100, 100);
         
         ctx.drawImage(piso,100,900,100, 100);
         ctx.drawImage(piso,100,800,100, 100);
@@ -124,7 +132,7 @@ function crearMapa(){
         ctx.drawImage(piso,100,300,100, 100);
         ctx.drawImage(piso,100,200,100, 100);
         ctx.drawImage(piso,100,100,100, 100);
-        ctx.drawImage(piso,100,0,100, 100);
+        ctx.drawImage(paredFrontal,100,0,100, 100);
         
         ctx.drawImage(piso,200,900,100, 100);
         ctx.drawImage(piso,200,800,100, 100);
@@ -135,7 +143,7 @@ function crearMapa(){
         ctx.drawImage(piso,200,300,100, 100);
         ctx.drawImage(piso,200,200,100, 100);
         ctx.drawImage(piso,200,100,100, 100);
-        ctx.drawImage(piso,200,0,100, 100);
+        ctx.drawImage(paredFrontal,200,0,100, 100);
         
         
         ctx.drawImage(piso,300,900,100, 100);
@@ -147,10 +155,10 @@ function crearMapa(){
         ctx.drawImage(piso,300,300,100, 100);
         ctx.drawImage(piso,300,200,100, 100);
         ctx.drawImage(piso,300,100,100, 100);
-        ctx.drawImage(piso,300,0,100, 100);
+        ctx.drawImage(paredFrontal,300,0,100, 100);
         
         
-        ctx.drawImage(piso,400,0,100, 100);
+        ctx.drawImage(paredFrontal,400,0,100, 100);
         ctx.drawImage(piso,400,100,100, 100);
         ctx.drawImage(piso,400,200,100, 100);
         ctx.drawImage(piso,400,300,100, 100);
@@ -162,7 +170,7 @@ function crearMapa(){
         ctx.drawImage(piso,400,900,100, 100);
         
         
-        ctx.drawImage(piso,500,0,100, 100);
+        ctx.drawImage(paredFrontal,500,0,100, 100);
         ctx.drawImage(piso,500,100,100, 100);
         ctx.drawImage(piso,500,200,100, 100);
         ctx.drawImage(piso,500,300,100, 100);
@@ -174,7 +182,7 @@ function crearMapa(){
         ctx.drawImage(piso,500,900,100, 100);
         
         
-        ctx.drawImage(TechoVert,600,900,100, 100);
+        ctx.drawImage(piso,600,900,100, 100);
         ctx.drawImage(TechoVert,600,800,100, 100);
         ctx.drawImage(TechoVert,600,700,100, 100);
         ctx.drawImage(TechoVert,600,600,100, 100);
@@ -183,9 +191,9 @@ function crearMapa(){
         ctx.drawImage(TechoVert,600,300,100, 100);
         ctx.drawImage(piso,600,200,100, 100);
         ctx.drawImage(piso,600,100,100, 100);
-        ctx.drawImage(piso,600,0,100, 100);
+        ctx.drawImage(paredFrontal,600,0,100, 100);
 
-        ctx.drawImage(piso,700,0,100, 100);
+        ctx.drawImage(paredFrontal,700,0,100, 100);
         ctx.drawImage(piso,700,100,100, 100);
         ctx.drawImage(piso,700,200,100, 100);
         ctx.drawImage(piso,700,300,100, 100);
@@ -196,7 +204,7 @@ function crearMapa(){
         ctx.drawImage(piso,700,800,100, 100);
         ctx.drawImage(piso,700,900,100, 100);
 
-        ctx.drawImage(piso,800,0,100, 100);
+        ctx.drawImage(paredFrontal,800,0,100, 100);
         ctx.drawImage(piso,800,100,100, 100);
         ctx.drawImage(piso,800,200,100, 100);
         ctx.drawImage(piso,800,300,100, 100);
@@ -207,7 +215,7 @@ function crearMapa(){
         ctx.drawImage(piso,800,800,100, 100);
         ctx.drawImage(piso,800,900,100, 100);
         
-        ctx.drawImage(piso,900,0,100, 100);
+        ctx.drawImage(paredFrontal,900,0,100, 100);
         ctx.drawImage(piso,900,100,100, 100);
         ctx.drawImage(piso,900,200,100, 100);
         ctx.drawImage(piso,900,300,100, 100);
@@ -217,8 +225,11 @@ function crearMapa(){
         ctx.drawImage(piso,900,700,100, 100);
         ctx.drawImage(piso,900,800,100, 100);
         ctx.drawImage(piso,900,900,100, 100);
+        if (endLevel() === true){
+          ctx.drawImage(paredFrontalPuertaAbierta,1000,0,100, 100);
+        }
+        else{ctx.drawImage(paredFrontalPuertaCerrada,1000,0,100, 100);}
         
-        ctx.drawImage(piso,1000,0,100, 100);
         ctx.drawImage(piso,1000,100,100, 100);
         ctx.drawImage(piso,1000,200,100, 100);
         ctx.drawImage(piso,1000,300,100, 100);
@@ -229,7 +240,7 @@ function crearMapa(){
         ctx.drawImage(piso,1000,800,100, 100);
         ctx.drawImage(piso,1000,900,100, 100);
         
-        ctx.drawImage(piso,1100,0,100, 100);
+        ctx.drawImage(paredFrontal,1100,0,100, 100);
         ctx.drawImage(piso,1100,100,100, 100);
         ctx.drawImage(piso,1100,200,100, 100);
         ctx.drawImage(piso,1100,300,100, 100);
@@ -239,8 +250,12 @@ function crearMapa(){
         ctx.drawImage(piso,1100,700,100, 100);
         ctx.drawImage(piso,1100,800,100, 100);
         ctx.drawImage(piso,1100,900,100, 100);
+        
 
-
+        if (arrayLlave.length >0 && arrayLlave[0].looted === false){
+         
+          arrayLlave[0].draw()
+        }
 
 
 

@@ -1,6 +1,6 @@
 
 //acordarse de limpiar el arraydeNpcenpelea
-
+let turnoJugador = true
 
 function controlarBatalla(){
 
@@ -23,10 +23,12 @@ function controlarBatalla(){
             
         //function actualizar turnos
             if (arrayPersonajesEnPelea[0].turnosActuales >= 2){
+                turnoJugador = false
                 npcAtaca()             
             }
             else {
                 console.log("Es el turno del pj principal")
+                turnoJugador = true
                 personajePrincipal.turnosActuales = personajePrincipal.turnosMaximos
                 arrayPersonajesEnPelea[0].turnosActuales = 4     
             }
@@ -73,6 +75,7 @@ function jugadorAtaca (ataque, contrincante) {
                 canv.height = 1000
                 arrayPersonajesEnPelea = []
                 mainMundo()
+                contrincante.dropear()
                 document.getElementById("batalla").className= "fondo ocultarFondo"
                
             }
@@ -120,7 +123,8 @@ function reiniciarObjetos (){
     // guardar en la misma variable la instancia nueva, acordarse de guardar la clase y el nombre elegido
 }
 function hasMuerto(){
-   
+    
+
 let muerto= document.createElement("div")
 muerto.id = "muerto"
 muerto.innerHTML= `
@@ -155,12 +159,16 @@ pelea.id = "pelea";
 function actualizarDom(npc){
     canv.width = 0
     canv.height = 0
-    
+    let turno= ""
+    if (turnoJugador=true){
+        turno = `Es el turno de ${personajePrincipal.nombre} `
+    }
+    else {turno = `Es el turno del NPC `}
    
 
     pelea.innerHTML=`<div id="batalla" class="fondo">
 
-    <div id="indicadorMensajes">Acá van los turnos</div>
+    <div id="indicadorMensajes">${turno}</div>
 
 <div class="level is-mobile">
 

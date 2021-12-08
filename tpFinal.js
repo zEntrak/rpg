@@ -1,3 +1,25 @@
+
+class item{
+    constructor(propiedades){
+      this.x = propiedades.x;
+      this.y = propiedades.y;
+      this.type = "";
+      this.looted = false;
+    }
+    draw(){
+      let error = 35;
+        ctx.drawImage(llave,(this.x-error),(this.y-error),150, 150)
+        
+    }
+
+}
+class key extends item {
+    constructor(posX, posY) {
+      super({x: posX, y: posY });
+      this.type = "Llave"
+
+    }
+}
 class Personaje {
     constructor(propiedades) {
       this.clase = propiedades.clase;
@@ -9,6 +31,7 @@ class Personaje {
       this.vidaMaxima = 1000;
       this.muerto = false;
       this.turno = false;
+      this.items = [];
     }
     recibeAtaque(valor) {
       this.puntosDeVida = this.puntosDeVida - valor;
@@ -64,6 +87,7 @@ class Personaje {
     imprimeVida() {
       console.log(`Ahora le quedan ${this.puntosDeVida} puntos de vida`);
     }
+    
     
   }
   
@@ -126,7 +150,7 @@ class Mago extends Personaje {
     }
          
     descargaElectrica(npcAtacado) {
-      var dañoRealizado = 50;
+      var dañoRealizado = 150;
       let manaGastado = 250;
       let turnosGastados= 2;
       if (this.turnosActuales <=0){
@@ -162,7 +186,7 @@ class Mago extends Personaje {
     moveRight(){
       
         
-        
+      endLevel()
         if (collider(this.x+85,this.y)){
           //console.log("No puede atravesar ese obstáculo")
           //console.log(this.x, this.y)
@@ -184,7 +208,7 @@ class Mago extends Personaje {
     }
     moveLeft(){
 
-     
+      endLevel()
       if (collider((this.x-this.movimiento)-15,this.y)){
        // console.log("No puede atravesar ese obstáculo")
         //console.log(this.x, this.y)
@@ -204,6 +228,7 @@ class Mago extends Personaje {
       }
     }
     moveUp(){
+      endLevel()
       if (collider(this.x-15,this.y-this.movimiento)){
         //console.log("No puede atravesar ese obstáculo")
         //console.log(this.x, this.y)
@@ -222,6 +247,7 @@ class Mago extends Personaje {
       } 
     }
     moveDown(){
+      endLevel()
       if (collider(this.x-15,this.y+this.movimiento)){
         //console.log("No puede atravesar ese obstáculo")
         //console.log(this.x, this.y)
@@ -247,7 +273,17 @@ class Mago extends Personaje {
                //Su turno ha finalizado return false
       }
       return this.turno;
-    }  
+    }
+    agarrarObjeto(){
+      let error = 15
+      if (arrayLlave[0].looted === false){
+        if((this.x-error) === arrayLlave[0].x && this.y ===arrayLlave[0].y){
+          this.items.push(arrayLlave[0])
+          arrayLlave[0].looted= true;
+        }
+      }
+     
+    }
 }    
 
 
@@ -260,6 +296,7 @@ class Mago extends Personaje {
       this.vidaMaxima -= this.vidaMaxima * 0.5;
       this.turnosActuales = 4
       this.turnosMaximos = 4
+      
 
       
       }
@@ -268,7 +305,7 @@ class Mago extends Personaje {
       let dañoMinRealizado = 150
       let dañoRealizado = Math.random() * (dañoMaxRealizado - dañoMinRealizado) + dañoMinRealizado;
       dañoRealizado = Math.round(dañoRealizado)
-      dañoRealizado= 1500
+     
       let turnosGastados= 3;
               
         personajePrincipal.recibeAtaque(dañoRealizado);
@@ -282,7 +319,7 @@ class Mago extends Personaje {
       let dañoMinRealizado = 100
       let dañoRealizado = Math.random() * (dañoMaxRealizado - dañoMinRealizado) + dañoMinRealizado;
       dañoRealizado = Math.round(dañoRealizado)
-      dañoRealizado= 1500
+
       let turnosGastados = 2
         personajePrincipal.recibeAtaque(dañoRealizado);
         this.turnosActuales -= turnosGastados;
@@ -296,13 +333,39 @@ class Mago extends Personaje {
       else {ctx.drawImage(lobo,x,y,70, 70); }
         
     }
+    dropear(){
+     
+      
+      if (validarDrops() >=3){
+        let error = 35;
+        /*ctx.drawImage(llave,(this.x-error),(this.y-error),150, 150)*/
+        const llave1 = new key(this.x,this.y)
+        llave1.draw()
+        arrayLlave.push(llave1)
+      }
+
+
+    }
 
     
 
   }
 
- 
-  
+const droppable = true;
+const arrayLlave= []
+ function validarDrops(){
+  //una variable global define si pueden dropear o no
+  if (droppable === true){
+    let contador = 0;
+    arrayNpcs.forEach(function(npc){
+      if (npc.muerto === true){
+        contador +=1;    
+      }
+
+    })
+   return contador;
+  }
+}
 
 //arrayEnemigos
   const lobo1= new Lobo("roberto",500, 600)
@@ -331,7 +394,7 @@ function collider(x,y){
 
 const arrayCollider = []   //Aquí van todas las posiciones donde queremos que no atraviese el personaje principal.
 
-arrayCollider.push([0,900],[0,800],[0,700],[0,600],[0,500],[0,400],[0,300],[0,200],[0,100],[0,0],[100,500],[200,500],[300,500],[500,500],[600,900],[600,800],[600,700],[600,600],[600,500],[600,400],[600,300],
+arrayCollider.push([0,900],[0,800],[0,700],[0,600],[0,500],[0,400],[0,300],[0,200],[0,100],[0,0],[100,500],[200,500],[300,500],[500,500],[600,800],[600,700],[600,600],[600,500],[600,400],[600,300],
                    [100,1000],[200,1000],[300,1000],[400,1000],[500,1000]
   )
 
@@ -357,7 +420,7 @@ function detectarPersonaje(){
       for (let i = 0; i < 400; i+= 100) {
         if (npc.y === personajesJugador[0].y + i ||  npc.y === personajesJugador[0].y - i){
           console.log("EMPIEZA LA BATALLA")//personajePrincipal ataque a lobo1
-         
+          arrayPersonajesEnPelea= []
           arrayPersonajesEnPelea.push(npc)
           actualizarDom(npc)
           return true
@@ -367,9 +430,11 @@ function detectarPersonaje(){
     }
     else if(npc.y === (personajesJugador[0].y) && npc.muerto == false){
       for (let a = 0; a < 400; a+=100) {
-        if (npc.x === (personajesJugador[0].x-15 + a) || (npc.x === (personajesJugador[0].x-15 - a))){
+        if (npc.x === ((personajesJugador[0].x-15) + a) || (npc.x === ((personajesJugador[0].x-15) - a))){
           console.log("EMPIEZA LA BATALLA")
+          arrayPersonajesEnPelea= []
           arrayPersonajesEnPelea.push(npc)
+          actualizarDom(npc)
           return true
         }
         
@@ -381,11 +446,24 @@ function detectarPersonaje(){
 
 }
 
-function batalla(){
-
-  if (detectarPersonaje === true){
-    //modificar dom para atacar
+function endLevel(){
+  if (personajePrincipal.clase === "Mago"){
+    error = 15
   }
+  else { error = 0}
+  probabilidad2 = personajePrincipal.y === 0 && (personajePrincipal.x - error)  === 1000
+  probabilidad1 = (personajePrincipal.x - error)  === 1000 && personajePrincipal.y === 100
+  probabilidad3 = (personajePrincipal.items).length > 0
+  if (probabilidad2 === true  ){
+    console.log("BORRAR MUNDO") //modificar DOM
+ }
+  if ( (probabilidad1 || probabilidad2) && probabilidad3){
+      console.log("Has finalizado el Nivel 1")
+      return true
+    }
+  
+  
+  
 
 
 }
@@ -493,6 +571,7 @@ const maxPersonajes = 2;
   }
   if (evento.key === "ArrowUp") return personajePrincipal.moveUp();
   if (evento.key === "ArrowLeft") return personajePrincipal.moveLeft();
+  if (evento.key === "a") return personajePrincipal.agarrarObjeto();
 })
 
 
