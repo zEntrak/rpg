@@ -280,6 +280,9 @@ class Mago extends Personaje {
         if((this.x-error) === arrayLlave[0].x && this.y ===arrayLlave[0].y){
           this.items.push(arrayLlave[0])
           arrayLlave[0].looted= true;
+          dibujarMapa()
+          imprimirNpcsEnPantalla()
+          personajePrincipal.draw(personajePrincipal.x, personajePrincipal.y)
         }
       }
      
