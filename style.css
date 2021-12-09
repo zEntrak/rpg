@@ -3,11 +3,11 @@ background-color: rgb(74, 74, 74);
 }
 
 .fondo {
-    background-color: rgb(185, 123, 166);
+    background-color: rgb(155 143 151);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 80%;
+    width: 70%;
     height: 680px;
     margin: auto;
     margin-top: 2%;
@@ -16,6 +16,9 @@ background-color: rgb(74, 74, 74);
     border-width: 5px;
     border-color: white;
     transition: 0.5s;
+    position:relative;
+    top:1500 ;
+    left:500;
 }
 
 .fondo.victoria {
@@ -23,6 +26,7 @@ background-color: rgb(74, 74, 74);
     animation-duration: 1s;
 
 }
+
 
 @keyframes victoria {
     0% { background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.536)) }
@@ -78,15 +82,71 @@ background-color: rgb(74, 74, 74);
 .vida {
     margin: 0%;
     margin-top: 1%;
-    font-size: 200%;
+    font-size: 140%;
     font-weight: 900;
     text-shadow: 10px 10px 50px black;
-    color: white;
+    color: #87162d;
 }
-
+.fotoMana{
+  width: 20px;
+  height: 20px ;
+  margin-left: 8%;
+}
+.mana {
+      margin: 0%;
+      margin-top: 1%;
+      font-size: 100%;
+      font-weight: 900;
+      text-shadow: 10px 10px 50px black;
+      color: #1a5e9c;
+      margin-left: 1%
+}
+.botonSeleccion{
+  border-radius: 4px;
+  color: white;
+  background-color: #736870;
+}
+.nombreClase{
+  font-weight: 650;
+}
+.nombreHabilidad{
+  font-weight: 500;
+}
+.tarjeta{
+  background-color: #F7DADA;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 15px 31px -8px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 15px 31px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 15px 31px -8px rgba(0,0,0,0.75);
+max-width: 20%;
+}
 .personaje {
     margin-bottom: 15%;
 }
+#personaje2 {
+  margin-top: 5%;
+  position:absolute; 
+  left:68%;
+  
+}
+#personaje1 {
+  margin-top: 5%;
+  position:absolute; 
+  left:40%;
+}
+.botones{
+  margin: 40px 0px;
+  
+  
+}
+
+.foto{ 
+   margin-top: 15%;
+  
+
+}
+
 
 #indicadorMensajes {
    background-color: rgba(230, 198, 93, 0.7);
@@ -290,7 +350,34 @@ background-color: rgb(74, 74, 74);
    
   }
 }
-
+#instrucciones{
+  position:absolute;
+  font-weight: bold;
+   top:10% ;
+   left:5%;
+   font-size: 25px;
+}
+#inst1{
+  position:fixed;
+  top:15%;
+  left:12%;
+  margin-right: 65%;
+  font-size: 20px;
+}
+#inst2{
+  position:fixed;
+  top:22%;
+  left:12%;
+  margin-right: 65%;
+  font-size: 20px;
+}
+#inst3{
+  position:fixed;
+  top:30%;
+  left:12%;
+  margin-right: 65%;
+  font-size: 20px;
+}
 
 .startStage {
     width: 500px;

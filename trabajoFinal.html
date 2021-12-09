@@ -50,7 +50,7 @@
 <body style= "color:#4a4a4a">
     <img id= "piso" src="images/piso.JPG" width="0" height="0">
     <img id= "paredIzq" src="images/paredIzq.JPG" width="0" height="0">
-    <img id= "paredAntorcha" src="images/paredAntorcha.JPG" width="0" height="0">
+    <img id= "paredAntorcha" src="images/paredAntorcha.png" width="0" height="0">
     <img id= "paredFrontal" src="images/paredFrontal.png" width="0" height="0">
     <img id= "TechoVert" src="images/TechoVert.JPG" width="0" height="0">
     <img id= "mago" src="images/mago.png" width="0" height="0">
@@ -74,84 +74,83 @@
         <canvas id="myCanvas" width="0" height="0" tabindex='1'>
     
         </canvas>
-        <div class="fondo" id='divPrincipal'; style="position:relative; top:1500 ;left:500;">
+        <div class="fondo" id='divPrincipal';>
         
         
         <div id='creacionPersonaje'>
-                <div id="instrucciones" style="position:absolute; top:40% ;left:5%;">Instrucciones
+                <div id="instrucciones">Instrucciones
                 <button id=mostrarInstrucciones>Mostrar</button>
-                <span id="Inst1" style="position:fixed; top:36%; left:12%;"> </span>
-                <span id="Inst2" style="position:fixed; top:40%; left:12%;"> </span>
-                <span id="Inst3" style="position:fixed; top:44%; left:12%;"> </span>
+                <span class="inst" id="inst1" > </span>
+                <span class="inst" id="inst2" > </span>
+                <span class="inst" id="inst3" > </span>
                 </div>
 
-                <div id="personaje1" style="position:absolute; top:1000 ;left:40%;">
-                    <p>Mago: <span id="mago">Algo</span></p>
-                    <p class="vida"> ❤ <span id="vidaMago"> 0         </span></p>
-                    <br>
+                <div id="personaje1" class="tarjeta">
+                    <p class="nombreClase">MAGO <span id="mago"></span></p>
+                    <p class="vida"> ❤ <span id="vidaMago"> 0         </span><span> <img class="fotoMana"src="images/mana.png"></span> <span id="manaMago" class="mana"> 0</span></p> 
                     
-                    <div class="personaje" style="position:relative; ">
-                            <img src="images/mago.png">
+                    
+                    <div class="foto" style="position:relative; ">
+                            <img src="images/magoRetrato.png">
                     </div>
         
-                    <div class="botones">
-                        <br>
+                    <div id="botones" class="botones">
+                        
                             <div> 
-                                <span id="habilidadMago1"> Descarga Eléctrica </span>
+                                <span id="habilidadMago1" class="nombreHabilidad"> DESCARGA ELECTRICA</span>
                             </div>
                             <p class="descripcionAtaque">
-                                Acá va la descripción
+                                Realizas un ataque por 200 que consume 270 de maná y 2 turnos
                             </p>
                         </div> 
-                        <br>
+                        
             
                     <div class="botones">
                             <div> 
-                                <span id="habilidadMago2"> Meditar </span>
+                                <span id="habilidadMago2" class="nombreHabilidad"> MEDITAR </span>
                             </div>
                             <p class="descripcionAtaque">
-                                Acá va la descripción
+                                Recargas un 60% de la Maná, consumiendo 1 turno
                             </p>
-                    </div> <br>
+                    </div> 
                     <div>
-                        <input type="button" id="magoSeleccionado" onclick="inputNombre('personaje1','personaje2','magoSeleccionado')" value="Seleccionar Mago"></input>
+                        <input type="button" class="botonSeleccion" id="magoSeleccionado" onclick="inputNombre('personaje1','personaje2','magoSeleccionado')" value="SELECCIONAR MAGO"></input>
                 
                     </div>
                 </div>
                
         
-                <div id="personaje2" style="position:absolute; top:1000 ;left:60%;">
-                    <p>Clerigo: <span id="clerigo">Algo</span></p>
-                    <p class="vida"> ❤ <span id="vidaClerigo">0</span> </p>
-                    <br>
-                    <div class="personaje">
+                <div id="personaje2" class="tarjeta">
+                    <p class="nombreClase">CLERIGO <span id="clerigo"></span></p>
+                    <p class="vida"> ❤ <span id="vidaClerigo">0</span>  <span> <img class="fotoMana"src="images/mana.png"></span> <span id="manaClerigo" class="mana">0</span> </p>
+                    
+                    <div class="foto">
                             <img src="images/clerigo.png" width="60" height="60">
                     </div>
                 
                     
                     <div class="botones">
-                        <br>
+                        
                         
                             <div> 
-                                <span> Tormenta de Fuego </span>
+                                <span class="nombreHabilidad"> TORMENTA DE FUEGO </span>
                             </div>
                             <p class="descripcionAtaque">
-                                Acá va la descripción
+                                Realizas un ataque por 180 y consume x de maná y 2 turnos
                             </p>
                         </div> 
-                        <br>
                         
                         <div class="botones">
                                 <div> 
-                                    <span> Curación </span>
+                                    <span class="nombreHabilidad"> CURACION </span>
                                 </div>
                                 <p class="descripcionAtaque">
-                                    Acá va la descripción
+                                    Te curas un 20% de la vida y consumes dos turnos
                                 </p>
                         </div> 
                         <div>
-                            <br>
-                            <input type="button" id="clerigoSeleccionado" onclick="inputNombre('personaje2','personaje1','clerigoSeleccionado')" value="Seleccionar Clérigo"></input>
+                           
+                            <input type="button" class="botonSeleccion" id="clerigoSeleccionado" onclick="inputNombre('personaje2','personaje1','clerigoSeleccionado')" value="SELECCIONAR CLERIGO"></input>
                     
                         </div>
                     </div>

@@ -96,7 +96,7 @@ class Personaje {
       super({ clase: "Clerigo", nombre: nombreClerigo, x: posX, y: posY });
       //this.punteria = punteria;
       this.puntosDeVida += this.puntosDeVida * 0.1;
-      this.mana = 200;
+      this.mana = 400;
       this.vidaMaxima += this.puntosDeVida * 0.1;
     }
     realizaCuracion() { //falta contador de pociones de vida

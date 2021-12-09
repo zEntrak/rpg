@@ -3,6 +3,8 @@
 
 $("#vidaMago").html(`<span style="color:red;">${magoDisp.puntosDeVida}</span>`)
 $("#vidaClerigo").html(`<span style="color:red;">${clerigoDisp.puntosDeVida}</span>`)
+$("#manaMago").html(`<span>${magoDisp.mana}</span>`)
+$("#manaClerigo").html(`<span>${clerigoDisp.mana}</span>`)
 
 /*document.getElementById("vidaMago").innerHTML = `<span style="color:red;">${magoDisp.puntosDeVida}</span>`;
 document.getElementById("vidaClerigo").innerHTML = `<span style="color:red;">${clerigoDisp.puntosDeVida}</span>`;*/

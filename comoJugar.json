@@ -1,8 +1,9 @@
 [
 
-    {"Controles": "Controles: Usa las flechas del teclado para moverte" },
+    {"Controles": "Controles: Usa las flechas del teclado para moverte ↑ ← ↓ → y la ´a´ para agarrar objetos" },
     {"Detalles": "Detalles: Si pasas por el eje x o y de un NPC, entrarás en combate. Uno de ellos te dará una llave"},
     {"Objetivo": "Objetivo: Deberás llegar a la puerta final para ganar"}
+    
 
 
 ]

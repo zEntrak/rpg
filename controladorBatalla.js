@@ -45,21 +45,30 @@ function controlarBatalla(){
                         
         }
 }
-function mostrarHechizo(){
+function dibujarHechizo(){
 
 let hechizo= document.createElement("div")
 hechizo.id = "hechizo"
 hechizo.innerHTML = `<img src="images/descarga.gif"></img> `
 
-document.getElementById("npcEnemigo").appendChild(hechizo)
+//document.getElementById("npcEnemigo").appendChild(hechizo)
 
-/*$("#npcEnemigo").append(hechizo)//crear personaje
-    
-    .fadeIn("2000")
-    .hide()*/
+$("#npcEnemigo").append(hechizo)//crear personaje
+$("#hechizo")
+.hide()
 
 }
-setTimeout(mostrarHechizo, 2000);
+
+
+function mostrarHechizo(){//que reciba como parametro el hechizo usado
+   $("#hechizo")
+    
+    .fadeIn(1000)
+    .hide("slow")
+   
+   
+}
+
 
 
 function jugadorAtaca (ataque, contrincante) {
@@ -68,6 +77,7 @@ function jugadorAtaca (ataque, contrincante) {
         
         if (ataque === 1) {
             personajePrincipal.descargaElectrica(contrincante)
+            
             mostrarHechizo()            
             controlarBatalla()
             if (contrincante.muerto == true){
@@ -157,6 +167,7 @@ reiniciar.addEventListener("click", function(){
 let pelea = document.createElement("div");
 pelea.id = "pelea";
 function actualizarDom(npc){
+    
     canv.width = 0
     canv.height = 0
     let turno= ""
@@ -235,11 +246,13 @@ function actualizarDom(npc){
     
 
     `
+    
 
     document.getElementById("divContainer").appendChild(pelea);
    
     descargaElectrica.addEventListener("click", function(){jugadorAtaca(1,arrayPersonajesEnPelea[0])})
     meditar.addEventListener("click", function(){jugadorAtaca(2,arrayPersonajesEnPelea[0])})
+    dibujarHechizo()
     //mordisco.addEventListener("click", function(){npcAtaca()})
     //arañazo.addEventListener("click", function(){npcAtaca()})
 }

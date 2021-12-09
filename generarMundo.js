@@ -46,9 +46,9 @@ function imprimirOraciones(jsonOraciones){
    oraciones = JSON.stringify(jsonOraciones)
  // for (x in jsonOraciones){
     for (oracion of jsonOraciones){
-    $("#Inst1").append(oracion.Controles)
-    $("#Inst2").append(oracion.Detalles)
-    $("#Inst3").append(oracion.Objetivo)
+    $("#inst1").append(oracion.Controles)
+    $("#inst2").append(oracion.Detalles)
+    $("#inst3").append(oracion.Objetivo)
     $("#mostrarInstrucciones")
     .hide("2000")
     
