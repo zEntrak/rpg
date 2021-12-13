@@ -77,7 +77,7 @@ function crearMapa(){
    
     mapa.id = "Mapa1";
     
-    canv.width = 1500
+    canv.width = 1300
     canv.height = 1000
     /*mapa.innerHTML=`
     

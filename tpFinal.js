@@ -37,29 +37,28 @@ class Personaje {
     }
     recibeAtaque(valor) {
       this.puntosDeVida = this.puntosDeVida - valor;
-      console.log(`${this.nombre} recibio un ataque de ${valor}`);
+     
       panelVida()
   
       if (this.puntosDeVida <= 0) {
-        console.log(`${this.nombre} ha muerto`);
+       
         this.muerto = true;
         this.draw(this.x,this.y)
         panelVida()
-        this.imprimeVida();
+        
       } else {
-        this.imprimeVida();
+        
         panelVida()
       }
     }
     recibeCuracion(valor) {
         var curacionTotal= this.puntosDeVida + valor;
 
-        console.log(this.vidaMaxima)
-        console.log(this.puntosDeVida)
+        
         
         if (this.puntosDeVida == this.vidaMaxima) {
-            console.log(`${this.nombre} no puede curarse, ya tiene la vida máxima`);
-            this.imprimeVida();
+            
+            
             panelVida()          
             panelMana()
             
@@ -68,7 +67,7 @@ class Personaje {
         else if (curacionTotal > this.vidaMaxima){
             this.puntosDeVida = this.vidaMaxima;
             console.log(`${this.nombre} recibio una curación de ${valor}`);
-            this.imprimeVida();
+           
             panelVida()          
             panelMana()
             
@@ -77,7 +76,7 @@ class Personaje {
         else{
             this.puntosDeVida += valor;
             console.log(`${this.nombre} recibio una curación de ${valor}`);
-            this.imprimeVida();
+            
             panelVida()          
             panelMana()
             
@@ -86,9 +85,7 @@ class Personaje {
        
     }
     
-    imprimeVida() {
-      console.log(`Ahora le quedan ${this.puntosDeVida} puntos de vida`);
-    }
+    
     
     
   }
@@ -106,7 +103,7 @@ class Personaje {
       if (this.puntosDeVida >= 901){
       this.puntosDeVida = 1100
       this.mana -= 100;
-      this.imprimeVida();
+      
       panelVida()          
       panelMana()
       
@@ -114,7 +111,7 @@ class Personaje {
       else{
       this.puntosDeVida = this.puntosDeVida + 200;
       this.mana -= 100;
-      this.imprimeVida();
+      
       panelMana()
       panelVida()
     }
@@ -143,26 +140,26 @@ class Mago extends Personaje {
         var dañoRealizado = 0
         if (this.mana >= 326){
         this.mana = 750
-        console.log(`${this.nombre} tiene ${this.mana} de mana`);
+        
         panelMana()
         }
         else {
         this.mana += maxMana*0.60
-        console.log(`${this.nombre} tiene ${this.mana} de mana`);
+        
         panelMana()
         indicadorBatalla(0,0, dañoRealizado, turnosGastados)
         }
     }
          
     descargaElectrica(npcAtacado) {
-      var dañoRealizado = 150;
+      var dañoRealizado = 200;
       let manaGastado = 250;
       let turnosGastados= 2;
       if (this.turnosActuales <=0){
-        console.log(`${this.nombre}, se ha quedado sin turnos, espera hasta que tu enemigo termine de jugar`)
+        
       }
       else if (this.mana< manaGastado){
-        console.log(`${this.nombre} no tiene maná para realizar el hechizo que cuesta ${manaGastado}`);
+        
         panelMana()
       }
       
@@ -176,12 +173,12 @@ class Mago extends Personaje {
         this.mana -= manaGastado;
         panelMana()
         indicadorBatalla(personajePrincipal.nombre, arrayPersonajesEnPelea[0].clase,dañoRealizado, turnosGastados)
-        console.log(`${turnosGastados} TURNOS -   ${this.nombre} ha atacado a ${nombreAtacado} por ${dañoRealizado} de daño y gastó ${manaGastado} de maná. A ${nombreAtacado} le quedan ${npcAtacado.puntosDeVida} de vida `);
+        
       }
     }
     draw(x, y){
       if (this.muerto == true){
-        console.log("muerto")
+        
         return 0
         
       }
@@ -310,30 +307,30 @@ class Mago extends Personaje {
       
       }
     mordisco() {
-      let dañoMaxRealizado = 250
-      let dañoMinRealizado = 150
+      let dañoMaxRealizado = 150
+      let dañoMinRealizado = 50
       let dañoRealizado = Math.random() * (dañoMaxRealizado - dañoMinRealizado) + dañoMinRealizado;
       dañoRealizado = Math.round(dañoRealizado)
      
-      let turnosGastados= 4;
+      let turnosGastados= 3;
               
         personajePrincipal.recibeAtaque(dañoRealizado);
         this.turnosActuales -= turnosGastados;
         indicadorBatalla(arrayPersonajesEnPelea[0].clase, personajePrincipal.nombre,dañoRealizado,turnosGastados)
         
-        console.log(`${this.nombre} ha atacado a ${personajePrincipal.nombre} por ${dañoRealizado} de daño. A ${personajePrincipal.nombre} le quedan ${personajePrincipal.puntosDeVida} de vida `);
+        
       
     }
     arañazo() {
-      let dañoMaxRealizado = 200
-      let dañoMinRealizado = 100
+      let dañoMaxRealizado = 120
+      let dañoMinRealizado = 40
       let dañoRealizado = Math.random() * (dañoMaxRealizado - dañoMinRealizado) + dañoMinRealizado;
       dañoRealizado = Math.round(dañoRealizado)
 
-      let turnosGastados = 4
+      let turnosGastados = 3
         personajePrincipal.recibeAtaque(dañoRealizado);
         this.turnosActuales -= turnosGastados;
-        console.log(`${this.nombre} ha atacado a ${personajePrincipal.nombre} por ${dañoRealizado} de daño. A ${personajePrincipal.nombre} le quedan ${personajePrincipal.puntosDeVida} de vida `);
+        
         indicadorBatalla(arrayPersonajesEnPelea[0].clase, personajePrincipal.nombre,dañoRealizado,turnosGastados)
     }
     draw(x, y) {
@@ -346,7 +343,7 @@ class Mago extends Personaje {
     dropear(){
      
       
-      if (validarDrops() >=3){
+      if (validarDrops() >=3 && validarDrops() < 4){
         let error = 35;
         /*ctx.drawImage(llave,(this.x-error),(this.y-error),150, 150)*/
         const llave1 = new key(this.x,this.y)
@@ -378,11 +375,11 @@ const arrayLlave= []
 }
 
 //arrayEnemigos
-  const lobo1= new Lobo("roberto",500, 600)
-  const lobo2= new Lobo("lobo2",700, 500)
-  const lobo3= new Lobo("lobo3",400, 100)
-  const lobo4= new Lobo("lobo4",200,400)
-  const arrayNpcs = [];
+  let lobo1= new Lobo("roberto",500, 600)
+  let lobo2= new Lobo("lobo2",700, 500)
+  let lobo3= new Lobo("lobo3",400, 100)
+  let lobo4= new Lobo("lobo4",200,400)
+  let arrayNpcs = [];
   arrayNpcs.push(lobo1,lobo2,lobo3,lobo4)
 
   
@@ -405,7 +402,8 @@ function collider(x,y){
 const arrayCollider = []   //Aquí van todas las posiciones donde queremos que no atraviese el personaje principal.
 
 arrayCollider.push([0,900],[0,800],[0,700],[0,600],[0,500],[0,400],[0,300],[0,200],[0,100],[0,0],[100,500],[200,500],[300,500],[500,500],[600,800],[600,700],[600,600],[600,500],[600,400],[600,300],
-                   [100,1000],[200,1000],[300,1000],[400,1000],[500,1000]
+                   [100,1000],[200,1000],[300,1000],[400,1000],[500,1000],[600,1000],[700,1000],[800,1000],[900,1000],[1000,1000],[1100,1000],[100,0],[200,0],[300,0],[400,0],[500,0],[600,0],[700,0],[800,0],[900,0],[1000,0],[1100,0],[1200,0],[1200,0],
+                   [1200,100],[1200,200],[1200,300],[1200,400],[1200,500],[1200,600],[1200,700],[1200,800],[1200,900],[1200,1000],[1200,1100]
   )
 
 //const posicion = arrayCollider.find(element => element[1] = ((115)-15))
@@ -413,7 +411,7 @@ arrayCollider.forEach(function(element) {
 //console.log(x, element[0], y, element[1])
 if ( element[0] === x && element[1] === y){
   
-  console.log("No podes pasar por acá " +x,y) 
+  
   bloqueado = true
 
 }
@@ -429,7 +427,7 @@ function detectarPersonaje(){
       //buscar y
       for (let i = 0; i < 400; i+= 100) {
         if (npc.y === personajesJugador[0].y + i ||  npc.y === personajesJugador[0].y - i){
-          console.log("EMPIEZA LA BATALLA")//personajePrincipal ataque a lobo1
+          
           arrayPersonajesEnPelea= []
           arrayPersonajesEnPelea.push(npc)
           actualizarDom()
@@ -441,7 +439,7 @@ function detectarPersonaje(){
     else if(npc.y === (personajesJugador[0].y) && npc.muerto == false){
       for (let a = 0; a < 400; a+=100) {
         if (npc.x === ((personajesJugador[0].x-15) + a) || (npc.x === ((personajesJugador[0].x-15) - a))){
-          console.log("EMPIEZA LA BATALLA")
+          
           arrayPersonajesEnPelea= []
           arrayPersonajesEnPelea.push(npc)
           actualizarDom()
@@ -465,10 +463,12 @@ function endLevel(){
   probabilidad1 = (personajePrincipal.x - error)  === 1000 && personajePrincipal.y === 100
   probabilidad3 = (personajePrincipal.items).length > 0
   if (probabilidad2 === true  ){
-    console.log("BORRAR MUNDO") //modificar DOM
+    
+    setTimeout(ventanaFinalizar, 1000);
  }
   if ( (probabilidad1 || probabilidad2) && probabilidad3){
-      console.log("Has finalizado el Nivel 1")
+      
+      setTimeout(ventanaFinalizar, 1000);
       return true
     }
   
@@ -492,7 +492,7 @@ const magoDisp= new Mago("-",100,100)
 const personajesDisponibles = []
 personajesDisponibles.push(magoDisp,clerigoDisp)
 //Array con Personajes del jugador principal
-const personajesJugador = [];
+let personajesJugador = [];
 //crearPersonaje()
 //const AliadoClerigo = new Clerigo("Letrof",-200,-100)
 //const Clerigo1 = new Clerigo("zLk",-300,-100);
@@ -554,7 +554,7 @@ const maxPersonajes = 2;
     let turnosRestantesJugadorActual = arrayPersonajesEnPelea.find(personaje => personaje.turnosActuales);
     let nombrePj = arrayPersonajesEnPelea.find(personaje => personaje.nombre);
     
-    console.log (turnosRestantesJugadorActual)
+    
 /*
     let atacado = arrayNpcs.find(personaje => personaje.nombre == nombreAtacado); 
     atacado.recibeAtaque(dañoRealizado);

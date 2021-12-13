@@ -30,7 +30,7 @@ function controlarBatalla(){
                            
             }
             else {
-                console.log("Es el turno del pj principal")
+                
                 turnoJugador = true
                 personajePrincipal.turnosActuales = personajePrincipal.turnosMaximos
                 arrayPersonajesEnPelea[0].turnosActuales = 4     
@@ -87,7 +87,7 @@ function jugadorAtaca (ataque, contrincante) {
             actualizarStatus()
             if (contrincante.muerto == true){
                 
-                canv.width = 1500
+                canv.width = 1300
                 canv.height = 1000
                 arrayPersonajesEnPelea = []
                 mainMundo()
@@ -150,7 +150,7 @@ function hasMuerto(){
 let muerto= document.createElement("div")
 muerto.id = "muerto"
 muerto.innerHTML= `
-<h1 class="h1Muerto">YOU DIED</h1>
+<h1 id="die" class="h1Muerto" class="fondo">YOU DIED</h1>
 
 <div class="startStage">
 		<div>
@@ -161,21 +161,54 @@ muerto.innerHTML= `
 				<p>Usa las flechas para moverte y trata de evitar a los lobos</p>
 				
 			</div>
-			<button id="reiniciar" onClick="" >Reiniciar nivel</button>
+			<button id="reiniciar" onClick=resetLevel() >Reiniciar nivel</button>
 		</div>
 	</div>
 `
 
 document.getElementById("divContainer").appendChild(muerto);
-reiniciar.addEventListener("click", function(){
-    canv.width = 1500
-    canv.height = 1000
-    arrayPersonajesEnPelea = []
-    mainMundo()
 
-})
 
 }
+
+function resetLevel(){
+    pauseMusic()
+    if (personajePrincipal.muerto=== true){
+    document.getElementById("die").muerto= "fondo ocultarFondo"
+    document.getElementById("divContainer").removeChild(muerto)
+    document.getElementById("batalla").className= "fondo ocultarFondo"    
+}
+    
+  lobo1= new Lobo("roberto",500, 600)
+  lobo2= new Lobo("lobo2",700, 500)
+  lobo3= new Lobo("lobo3",400, 100)
+  lobo4= new Lobo("lobo4",200,400)
+  arrayNpcs = [];
+  arrayNpcs.push(lobo1,lobo2,lobo3,lobo4)
+  var nombrePersonajePrincipal = personajePrincipal.nombre
+  personajePrincipal = new Mago(nombrePersonajePrincipal,115,800)
+  personajesJugador = []
+  personajesJugador.push(personajePrincipal)
+  personajePrincipal.muerto= false
+  
+    canv.width = 1300
+    canv.height = 1000
+    arrayPersonajesEnPelea = []
+    crearMapa()
+    dibujarMapa()
+    mainMundo() 
+}
+
+
+
+
+
+
+
+
+
+
+
 let pelea = document.createElement("div");
 pelea.id = "pelea";
 let music = new Audio('sounds/battle.mp3')
@@ -213,7 +246,7 @@ function actualizarDom(){
                         <span> Descarga Eléctrica </span>
                     </button>
                     <p class="descripcionAtaque">
-                        Acá va la descripción
+                    Realizas un ataque por 200 que consume 270 de maná y 2 turnos
                     </p>
                 </div> 
 
@@ -222,7 +255,7 @@ function actualizarDom(){
                             <span> Meditar </span>
                         </button>
                         <p class="descripcionAtaque">
-                            Acá va la descripción
+                        Recargas un 60% de la Maná, consumiendo 1 turno
                         </p>
                 </div> 
             </div>
@@ -243,7 +276,7 @@ function actualizarDom(){
                         <span> Mordisco </span>
                     </button>
                     <p class="descripcionAtaque">
-                        Acá va la descripción
+                        Realiza un ataque entre 150 y 50 de daño
                     </p>
                 </div> 
     
@@ -252,7 +285,7 @@ function actualizarDom(){
                             <span> Arañazo </span>
                         </button>
                         <p class="descripcionAtaque">
-                            Acá va la descripción
+                        Realiza un ataque entre 120 y 40 de daño
                         </p>
                 </div> 
                 
