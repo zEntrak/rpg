@@ -1,4 +1,6 @@
 
+
+
 class item{
     constructor(propiedades){
       this.x = propiedades.x;
@@ -137,6 +139,8 @@ class Mago extends Personaje {
     }
     meditar() {
         var maxMana= 750;
+        let turnosGastados = 2
+        var dañoRealizado = 0
         if (this.mana >= 326){
         this.mana = 750
         console.log(`${this.nombre} tiene ${this.mana} de mana`);
@@ -146,6 +150,7 @@ class Mago extends Personaje {
         this.mana += maxMana*0.60
         console.log(`${this.nombre} tiene ${this.mana} de mana`);
         panelMana()
+        indicadorBatalla(0,0, dañoRealizado, turnosGastados)
         }
     }
          
@@ -170,7 +175,8 @@ class Mago extends Personaje {
         this.turnosActuales -= turnosGastados;
         this.mana -= manaGastado;
         panelMana()
-        console.log(`${this.nombre} ha atacado a ${nombreAtacado} por ${dañoRealizado} de daño y gastó ${manaGastado} de maná. A ${nombreAtacado} le quedan ${npcAtacado.puntosDeVida} de vida `);
+        indicadorBatalla(personajePrincipal.nombre, arrayPersonajesEnPelea[0].clase,dañoRealizado, turnosGastados)
+        console.log(`${turnosGastados} TURNOS -   ${this.nombre} ha atacado a ${nombreAtacado} por ${dañoRealizado} de daño y gastó ${manaGastado} de maná. A ${nombreAtacado} le quedan ${npcAtacado.puntosDeVida} de vida `);
       }
     }
     draw(x, y){
@@ -309,10 +315,11 @@ class Mago extends Personaje {
       let dañoRealizado = Math.random() * (dañoMaxRealizado - dañoMinRealizado) + dañoMinRealizado;
       dañoRealizado = Math.round(dañoRealizado)
      
-      let turnosGastados= 3;
+      let turnosGastados= 4;
               
         personajePrincipal.recibeAtaque(dañoRealizado);
         this.turnosActuales -= turnosGastados;
+        indicadorBatalla(arrayPersonajesEnPelea[0].clase, personajePrincipal.nombre,dañoRealizado,turnosGastados)
         
         console.log(`${this.nombre} ha atacado a ${personajePrincipal.nombre} por ${dañoRealizado} de daño. A ${personajePrincipal.nombre} le quedan ${personajePrincipal.puntosDeVida} de vida `);
       
@@ -323,11 +330,11 @@ class Mago extends Personaje {
       let dañoRealizado = Math.random() * (dañoMaxRealizado - dañoMinRealizado) + dañoMinRealizado;
       dañoRealizado = Math.round(dañoRealizado)
 
-      let turnosGastados = 2
+      let turnosGastados = 4
         personajePrincipal.recibeAtaque(dañoRealizado);
         this.turnosActuales -= turnosGastados;
         console.log(`${this.nombre} ha atacado a ${personajePrincipal.nombre} por ${dañoRealizado} de daño. A ${personajePrincipal.nombre} le quedan ${personajePrincipal.puntosDeVida} de vida `);
- 
+        indicadorBatalla(arrayPersonajesEnPelea[0].clase, personajePrincipal.nombre,dañoRealizado,turnosGastados)
     }
     draw(x, y) {
       if (this.muerto == true){
@@ -425,7 +432,7 @@ function detectarPersonaje(){
           console.log("EMPIEZA LA BATALLA")//personajePrincipal ataque a lobo1
           arrayPersonajesEnPelea= []
           arrayPersonajesEnPelea.push(npc)
-          actualizarDom(npc)
+          actualizarDom()
           return true
         }
         
@@ -437,7 +444,7 @@ function detectarPersonaje(){
           console.log("EMPIEZA LA BATALLA")
           arrayPersonajesEnPelea= []
           arrayPersonajesEnPelea.push(npc)
-          actualizarDom(npc)
+          actualizarDom()
           return true
         }
         
