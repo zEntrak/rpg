@@ -83,7 +83,7 @@ function jugadorAtaca (ataque, contrincante) {
             personajePrincipal.descargaElectrica(contrincante)
             
             mostrarHechizo()          
-            controlarBatalla()
+            
             actualizarStatus()
             if (contrincante.muerto == true){
                 
@@ -96,7 +96,7 @@ function jugadorAtaca (ataque, contrincante) {
                 document.getElementById("batalla").className= "fondo ocultarFondo"         
                 pauseMusic()
             }
-            
+            controlarBatalla()
 
             
         } 
