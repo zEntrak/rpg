@@ -94,9 +94,9 @@ function jugadorAtaca (ataque, contrincante) {
                 
                 contrincante.dropear()
                 document.getElementById("batalla").className= "fondo ocultarFondo"         
-               
+                pauseMusic()
             }
-            pauseMusic()
+            
 
             
         } 
@@ -178,8 +178,9 @@ reiniciar.addEventListener("click", function(){
 }
 let pelea = document.createElement("div");
 pelea.id = "pelea";
+let music = new Audio('sounds/battle.mp3')
 function actualizarDom(){
-    const music = new Audio('sounds/battle.mp3')
+    
     music.play()
     canv.width = 0
     canv.height = 0
